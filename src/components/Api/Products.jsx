@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const url = 'https://api.noroff.dev/api/v1/online-shop';
 
-async function fetchData() {
+async function fetchPosts() {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -16,7 +16,7 @@ async function fetchData() {
   }
 }
 
-export default fetchData;
+export default fetchPosts;
 
 // function GetApi() {
 //   const [posts, setPosts] = useState([]);

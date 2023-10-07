@@ -6,6 +6,7 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 import Layout from './components/Layout';
 import PageNotFound from './pages/PageNotFound';
+import CheckOutSuccess from './pages/CheckOutSuccess';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -15,9 +16,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='product' element={<Product />} />
+          <Route path='/product/:postId' element={<Product />} />
           <Route path='contact' element={<Contact />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='checkoutsuccess' element={<CheckOutSuccess />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import fetchData from '../../components/Api/Products';
+import { Link } from 'react-router-dom';
+import fetchPosts from '../../components/Api/Products';
+import * as S from '../../App.styles';
+import Search from '../../components/Search';
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetchData()
+    fetchPosts()
       .then((result) => {
         setPosts(result);
         setIsLoading(false);
@@ -17,20 +21,30 @@ function Home() {
       });
   }, []);
 
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   if (isLoading) {
     return <div>Is Loading Posts</div>;
   }
 
   return (
-    <div>
-      {posts.map((post) => (
-        <div>
-          <img src={post.imageUrl} alt={post.title} />
-          <h2>{post.title}</h2>
-          <p>{post.description}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <Search onSearch={setSearchQuery} />
+      <S.ProductCard>
+        {filteredPosts.map((post) => (
+          <Link to={`/product/${post.id}`} key={post.id}>
+            <img src={post.imageUrl} alt={post.title} />
+            <S.ProductPrice>
+              <h2>{post.title}</h2>
+              <p>Now: ${post.discountedPrice}</p>
+            </S.ProductPrice>
+          </Link>
+        ))}
+      </S.ProductCard>
+    </>
   );
 }
+
 export default Home;

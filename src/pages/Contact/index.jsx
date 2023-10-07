@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Button, Col } from 'react-bootstrap';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Form } from 'react-bootstrap';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import styles from './contact.module.css';
+import Button from 'react-bootstrap/Button';
 
 const schema = yup
   .object({
@@ -37,16 +38,12 @@ function Contact() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.contactHeader}>Contact Form</h1>
       <Form.Floating>
         <Form.Control id='fullName' type='text' placeholder='John Doe' {...register('fullName')} />
         <label htmlFor='fullName'>Full Name</label>
         <p>{errors.fullName?.message}</p>
-      </Form.Floating>
-      <Form.Floating>
-        <Form.Control id='subject' type='text' placeholder='Subject' {...register('subject')} />
-        <label htmlFor='subject'>Subject</label>
-        <p>{errors.subject?.message}</p>
       </Form.Floating>
       <Form.Floating>
         <Form.Control id='email' type='email' placeholder='Email' {...register('email')} />
@@ -54,12 +51,19 @@ function Contact() {
         <p>{errors.email?.message}</p>
       </Form.Floating>
       <Form.Floating>
+        <Form.Control id='subject' type='text' placeholder='Subject' {...register('subject')} />
+        <label htmlFor='subject'>Subject</label>
+        <p>{errors.subject?.message}</p>
+      </Form.Floating>
+      <Form.Floating>
         <Form.Control id='body' type='text' placeholder='Body' {...register('body')} />
         <label htmlFor='body'>Body</label>
         <p>{errors.body?.message}</p>
       </Form.Floating>
-      <input type='submit' />
-    </form>
+      <Button variant='dark' type='submit'>
+        Submit
+      </Button>
+    </Form>
   );
 }
 
