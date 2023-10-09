@@ -1,0 +1,11 @@
+.contactForm {
+  max-width: 400px;
+  margin: 50px auto 0 auto;
+  padding: 50px;
+  background-color: #e7e7e7;
+}
+
+.contactHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}

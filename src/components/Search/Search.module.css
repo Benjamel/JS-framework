@@ -1,0 +1,5 @@
+.searchBar {
+  max-width: 350px;
+  display: flex;
+  margin: 20px auto;
+}
