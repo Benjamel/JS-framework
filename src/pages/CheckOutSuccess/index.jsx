@@ -9,7 +9,7 @@ function CheckOut() {
 
   useEffect(() => {
     dispatch({ type: 'clearCart' });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
