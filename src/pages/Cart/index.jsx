@@ -30,7 +30,7 @@ function Cart() {
                   <img src={item.imageUrl} alt={item.title} />
                 </div>
                 <div className='cart-item'>
-                  <p>{item.title}</p>
+                  <h4>{item.title}</h4>
                   <p>Price: ${item.discountedPrice}</p>
                   <p>Quantity: {item.quantity}</p>
                   <Button
@@ -42,6 +42,7 @@ function Cart() {
                 </div>
               </div>
             ))}
+            <hr />
             <div>
               <span>Total: ${total.toFixed(2)}</span>
             </div>

@@ -20,7 +20,6 @@ export const ProductCard = styled.div`
 
   a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    // box-shadow: 2px 2px 2px black;
   }
 
   h2 {
@@ -51,8 +50,10 @@ export const ProductCard = styled.div`
 //Single product page
 
 export const ViewProduct = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 16px;
   width: 100%;
 
@@ -75,7 +76,7 @@ export const ViewProduct = styled.div`
 
     img {
       height: 400px;
-      width: 300px;
+      width: 100%;
       margin-bottom: 0;
     }
   }
@@ -98,6 +99,10 @@ export const CartPage = styled.div`
 
   .removeFromCart {
     margin-bottom: 20px;
+  }
+
+  hr {
+    width: 100%;
   }
 
   @media (min-width: 768px) {

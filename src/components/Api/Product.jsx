@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom';
-
 const url = 'https://api.noroff.dev/api/v1/online-shop';
 
 async function fetchPost() {

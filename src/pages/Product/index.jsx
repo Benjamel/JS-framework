@@ -50,7 +50,7 @@ function Product() {
   return (
     <>
       <S.ViewProduct>
-        <div className='productDetails'>
+        <div>
           <img src={post.imageUrl} alt={post.title} />
         </div>
         <div>
