@@ -24,7 +24,7 @@
 1. Clone the repo:
 
 ```bash
-  git@github.com:Benjamel/Benjamel.github.io.git
+  git@github.com:Benjamel/js-framework.git
 ```
 
 2. Install the dependencies:
