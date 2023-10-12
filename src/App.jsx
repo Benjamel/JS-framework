@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Product from './pages/Product';
@@ -11,6 +11,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  const location = useLocation();
+
+  useEffect((post) => {
+    if (location.pathname === '/product') {
+      document.title = post.title;
+    } else {
+      document.title = 'Online Shop';
+    }
+  });
+
   return (
     <div>
       <Routes>
