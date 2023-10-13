@@ -20,6 +20,8 @@ function Product() {
 
         const data = await response.json();
         setPost(data);
+
+        document.title = data.title;
       } catch (error) {
         console.log(`Error ${error.message}`);
       }
