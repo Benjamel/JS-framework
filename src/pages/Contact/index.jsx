@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Form } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -25,6 +25,8 @@ const schema = yup
   .required();
 
 function Contact() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -33,13 +35,17 @@ function Contact() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
+  function onSubmit(data, e) {
     console.log(data);
+    setIsSubmitted(true);
+
+    e.target.reset();
   }
 
   return (
     <Form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={styles.contactHeader}>Contact Form</h1>
+      {isSubmitted ? <h6 className={styles.successMessage}>Successfully Submitted!</h6> : null}
       <Form.Floating>
         <Form.Control id='fullName' type='text' placeholder='John Doe' {...register('fullName')} />
         <label htmlFor='fullName'>Full Name</label>
@@ -60,7 +66,7 @@ function Contact() {
         <label htmlFor='body'>Body</label>
         <p>{errors.body?.message}</p>
       </Form.Floating>
-      <Button variant='dark' type='submit'>
+      <Button variant='dark' type='submit' disabled={isSubmitted}>
         Submit
       </Button>
     </Form>

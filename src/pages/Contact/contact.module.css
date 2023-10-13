@@ -5,7 +5,12 @@
   background-color: #e7e7e7;
 }
 
-.contactHeader {
+.contactHeader,
+.successMessage {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.successMessage {
+  color: green;
 }
