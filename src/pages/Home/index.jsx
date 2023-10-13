@@ -38,7 +38,13 @@ function Home() {
             <img src={post.imageUrl} alt={post.title} />
             <S.ProductPrice>
               <h2>{post.title}</h2>
-              <p>Now: ${post.discountedPrice}</p>
+              {post.price !== post.discountedPrice ? (
+                <p>
+                  <span className='normalPrice'>{post.price}</span> Now: ${post.discountedPrice}
+                </p>
+              ) : (
+                <p>${post.discountedPrice}</p>
+              )}
             </S.ProductPrice>
           </Link>
         ))}

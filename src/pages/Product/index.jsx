@@ -57,7 +57,13 @@ function Product() {
         </div>
         <div>
           <h2>{post.title}</h2>
-          <p>Now: ${post.discountedPrice}</p>
+          {post.price !== post.discountedPrice ? (
+            <p>
+              <span className='normalPrice'>{post.price}</span> Now: ${post.discountedPrice}
+            </p>
+          ) : (
+            <p>${post.discountedPrice}</p>
+          )}
           {discountPercentage !== null && <h6>Discount: {discountPercentage}%</h6>}
           <p>{post.description}</p>
           <Button variant='dark' onClick={() => addToCart(post)}>

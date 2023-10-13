@@ -14,6 +14,10 @@ export const ReusableStyles = styled.div`
     object-fit: cover;
   }
 
+  .normalPrice {
+    text-decoration: line-through;
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
