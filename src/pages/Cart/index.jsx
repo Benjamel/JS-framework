@@ -17,42 +17,40 @@ function Cart() {
   }, 0);
 
   return (
-    <>
-      <S.CartPage>
-        <h1>Your Cart</h1>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <>
-            {cart.map((item) => (
-              <div key={item.id}>
-                <div>
-                  <img src={item.imageUrl} alt={item.title} />
-                </div>
-                <div className='cart-item'>
-                  <h4>{item.title}</h4>
-                  <p>Price: ${item.discountedPrice}</p>
-                  <p>Quantity: {item.quantity}</p>
-                  <Button
-                    className='removeFromCart'
-                    variant='dark'
-                    onClick={() => removeFromCart(item.id)}>
-                    Remove from Cart
-                  </Button>
-                </div>
+    <S.CartPage>
+      <h1>Your Cart</h1>
+      {cart.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <div className='cart-container'>
+          {cart.map((item) => (
+            <div key={item.id} className='cart-item'>
+              <img src={item.imageUrl} alt={item.title} />
+              <div className='cart-item-details'>
+                <h4>{item.title}</h4>
+                <p>${item.discountedPrice}</p>
+                <p>Quantity: {item.quantity}</p>
+                <Button
+                  className='removeFromCart'
+                  variant='dark'
+                  onClick={() => removeFromCart(item.id)}>
+                  Remove
+                </Button>
               </div>
-            ))}
-            <hr />
-            <div>
-              <span>Total: ${total.toFixed(2)}</span>
             </div>
-            <Link to='/CheckOutSuccess'>
-              <Button variant='dark'>Check Out</Button>
-            </Link>
-          </>
-        )}
-      </S.CartPage>
-    </>
+          ))}
+          <hr />
+          <div className='total-container'>
+            <span>Total: ${total.toFixed(2)}</span>
+            <div>
+              <Link to='/CheckOutSuccess'>
+                <Button variant='dark'>Check Out</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </S.CartPage>
   );
 }
 
