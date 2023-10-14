@@ -3,7 +3,12 @@
 
 ## Description
 
-
+Tasked to create an eCom store. With the following pages:
+- Homepage
+- Indvidual product page
+- Cart Page
+- Checkout success page
+- And an contact form 
 
 ## Features
 
