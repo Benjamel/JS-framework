@@ -10,6 +10,8 @@ import styles from './Navbar.module.css';
 function Header() {
   const cart = useSelector((state) => state.cart);
 
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <Navbar bg='dark' data-bs-theme='dark'>
       <Container className={styles.navbar}>
@@ -25,7 +27,7 @@ function Header() {
           </Nav.Link>
           <Nav.Link to='/cart' as={Link}>
             <img src={Logo} alt='Cart' />
-            <span>Cart ({cart.length})</span>
+            <span>Cart [{totalQuantity}]</span>
           </Nav.Link>
         </Nav>
       </Container>

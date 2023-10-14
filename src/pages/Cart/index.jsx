@@ -9,6 +9,7 @@ function Cart() {
   const dispatch = useDispatch();
 
   const removeFromCart = (productId) => {
+    console.log(productId);
     dispatch({ type: 'removeFromCart', payload: { id: productId } });
   };
 
