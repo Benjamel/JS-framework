@@ -50,34 +50,38 @@ function Product() {
   };
 
   return (
-    <>
-      <S.ViewProduct>
-        <div>
-          <img src={post.imageUrl} alt={post.title} />
+    <S.ViewProduct>
+      <div>
+        <img src={post.imageUrl} alt={post.title} />
+      </div>
+      <div>
+        <h2>{post.title}</h2>
+        {post.price !== post.discountedPrice ? (
+          <p>
+            <span className='normalPrice'>{post.price}</span> Now: ${post.discountedPrice}
+          </p>
+        ) : (
+          <p>${post.discountedPrice}</p>
+        )}
+        {discountPercentage !== null && <h6>Discount: {discountPercentage}%</h6>}
+        <p>{post.description}</p>
+        <Button variant='dark' onClick={() => addToCart(post)}>
+          Add to cart
+        </Button>
+        <div className='productReviews'>
+          {post.reviews?.length ? (
+            <>
+              <h2>Reviews</h2>
+              <p>Rating: {post.reviews[0].rating}/5</p>
+              <h6>{post.reviews[0].username}</h6>
+              <p>- {post.reviews[0].description}</p>
+            </>
+          ) : (
+            <p>No reviews</p>
+          )}
         </div>
-        <div>
-          <h2>{post.title}</h2>
-          <p>Now: ${post.discountedPrice}</p>
-          {discountPercentage !== null && <h6>Discount: {discountPercentage}%</h6>}
-          <p>{post.description}</p>
-          <Button variant='dark' onClick={() => addToCart(post)}>
-            Add to cart
-          </Button>
-          <div className='productReviews'>
-            {post.reviews?.length ? (
-              <>
-                <h2>Reviews</h2>
-                <p>Rating: {post.reviews[0].rating}/5</p>
-                <h6>{post.reviews[0].username}</h6>
-                <p>- {post.reviews[0].description}</p>
-              </>
-            ) : (
-              <p>No reviews</p>
-            )}
-          </div>
-        </div>
-      </S.ViewProduct>
-    </>
+      </div>
+    </S.ViewProduct>
   );
 }
 

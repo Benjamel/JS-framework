@@ -14,6 +14,10 @@ export const ReusableStyles = styled.div`
     object-fit: cover;
   }
 
+  .normalPrice {
+    text-decoration: line-through;
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -65,12 +69,6 @@ export const ViewProduct = styled(ReusableStyles)`
 //Cart page
 
 export const CartPage = styled(ReusableStyles)`
-  img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
   .removeFromCart {
     margin-bottom: 20px;
   }
@@ -79,8 +77,32 @@ export const CartPage = styled(ReusableStyles)`
     width: 100%;
   }
 
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .total-container {
+    text-align: center;
+  }
+
   @media (min-width: 768px) {
     flex-direction: column;
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .cart-item img {
+      max-width: 300px;
+      margin-right: 20px;
+      height: auto;
+    }
+
+    .removeFromCart {
+      margin-top: 10px;
+    }
   }
 `;
 
