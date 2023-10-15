@@ -2,3 +2,14 @@
   justify-content: space-between;
   padding: 10px 0;
 }
+
+.cartCircle {
+  background-color: white;
+  padding: 1px;
+  border-radius: 5px;
+  margin-left: 2px;
+}
+
+.cartCounter {
+  color: black;
+}
