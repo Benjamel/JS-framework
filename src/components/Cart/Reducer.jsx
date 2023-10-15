@@ -20,22 +20,27 @@ export function reducer(state, action) {
       return { ...state, cart: updatedCart, total: updatedTotal };
 
     case 'removeFromCart':
-      const updateRemoveCart = state.cart.map((item) => {
-        if (item.id === action.payload.id) {
-          return {
-            ...item,
-            quantity: item.quantity - 1,
-          };
-        }
-        return item;
-      });
+      const updatedCartFiltered = state.cart
+        .map((item) => {
+          if (item.id === action.payload.id) {
+            if (item.quantity > 1) {
+              return {
+                ...item,
+                quantity: item.quantity - 1,
+              };
+            }
+            return null;
+          }
+          return item;
+        })
+        .filter((item) => item !== null);
 
-      const updateTotalCart = updateRemoveCart.reduce(
+      const updatedTotalCart = updatedCartFiltered.reduce(
         (total, item) => total + item.discountedPrice * item.quantity,
         0
       );
 
-      return { ...state, cart: updateRemoveCart, total: updateTotalCart };
+      return { ...state, cart: updatedCartFiltered, total: updatedTotalCart };
 
     case 'clearCart':
       return { cart: [], total: 0 };
