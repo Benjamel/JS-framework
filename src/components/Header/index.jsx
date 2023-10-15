@@ -27,9 +27,7 @@ function Header() {
           </Nav.Link>
           <Nav.Link to='/cart' as={Link}>
             <img src={Logo} alt='Cart' />
-            <span className={styles.cartCircle}>
-              <span className={styles.cartCounter}>{totalQuantity}</span>
-            </span>
+            <span className={styles.cartCounter}>{totalQuantity}</span>
           </Nav.Link>
         </Nav>
       </Container>
